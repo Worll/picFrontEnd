@@ -1,0 +1,21 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "type": "chrome",
+            "request": "launch",
+            "sourceMaps": true,
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:4200",
+            "webRoot": "${workspaceFolder}/angular-router-sample"
+        },
+        {
+            "name": "Chrome Attach",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "url": "http://localhost:4200/heroes",
+            "webRoot": "${workspaceFolder}/angular-router-sample"
+        }
+    ]
+}
