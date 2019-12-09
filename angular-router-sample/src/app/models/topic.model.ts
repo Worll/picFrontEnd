@@ -1,8 +1,13 @@
 export class Topic {
-  id: number;
-  username: string;
-  password: string;
-  firstName: string;
-  lastName: string;
+  pk: number;
+  model: string;
+  fields: TopicFields;
   token?: string;
+}
+
+export class TopicFields {
+  name: string;
+  numberOfPhotos: number;
+  authorID: number;
+  tags: string;
 }

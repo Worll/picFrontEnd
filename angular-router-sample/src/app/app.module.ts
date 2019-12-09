@@ -11,12 +11,16 @@ import { JwtInterceptor } from './helpers/JwtInterceptor';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from './login/login.component';
 
+import { FormsModule } from '@angular/forms';
+
+
 @NgModule({
   imports: [
     BrowserModule,
     ReactiveFormsModule,
     HttpClientModule,
-    appRoutingModule
+    appRoutingModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,

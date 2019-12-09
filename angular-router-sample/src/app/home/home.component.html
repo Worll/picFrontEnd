@@ -1,10 +1,21 @@
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+<div class="jumbotron text-center">
+  <h1>My First Bootstrap Page</h1>
+  <p>Resize this responsive page to see the effect!</p>
+</div>
+
 <div class="card mt-4">
     <h4 class="card-header">You're logged in with Angular 8 & JWT!!</h4>
     <div class="card-body">
         <h6>Users from secure api end point</h6>
-        <div *ngIf="loading" class="spinner-border spinner-border-sm"></div>
-        <ul *ngIf="users">
-            <li *ngFor="let user of users">{{user.firstName}} {{user.lastName}}</li>
+        <div *ngIf="loading" class="lds-ring"></div>
+        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
+        <ul *ngIf="topics">
+            <li *ngFor="let topic of topics">{{topic.pk}} {{topic.model}} {{topic.fields.name}}</li>
         </ul>
     </div>
 </div>
