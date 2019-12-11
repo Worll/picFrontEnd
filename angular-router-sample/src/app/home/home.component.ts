@@ -6,6 +6,7 @@ import { Topic } from '../models/topic.model';
 import { TopicService } from '../topic.service';
 
 import { AuthenticateService } from '../authenticate.service';
+import { Router } from '@angular/router';
 
 @Component({ templateUrl: './home.component.html' , styleUrls: ['./home.component.css'] } )
 
@@ -13,7 +14,8 @@ export class HomeComponent implements OnInit {
   loading = false;
   topics: Topic[];
 
-  constructor(private topicService: TopicService) { }
+  constructor(private topicService: TopicService,
+              private router: Router) { }
 
   ngOnInit() {
     this.loading = true;

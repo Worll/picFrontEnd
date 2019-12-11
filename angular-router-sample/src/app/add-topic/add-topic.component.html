@@ -1,0 +1,32 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="alert alert-info">
+        Username: test<br />
+        Password: test
+    </div>
+    <div class="card">
+        <h4 class="card-header">Angular 8 JWT Login Example</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="topicName">Topic name</label>
+                    <input type="text" formControlName="topicName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.topicName.errors }" />
+                    <div *ngIf="submitted && f.topicName.errors" class="invalid-feedback">
+                        <div *ngIf="f.topicName.errors.required">Topic name is required</div>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="tags">Tags</label>
+                    <input type="text" formControlName="tags" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.tags.errors }" />
+                    <div *ngIf="submitted && f.tags.errors" class="invalid-feedback">
+                    <div *ngIf="f.topicName.errors.required">Topic tags are required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Add topic
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>

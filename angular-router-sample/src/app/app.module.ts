@@ -13,6 +13,8 @@ import { LoginComponent } from './login/login.component';
 
 import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
+import { PicturesComponent } from './pictures/pictures.component';
+import { AddTopicComponent } from './add-topic/add-topic.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { ProfileComponent } from './profile/profile.component';
     AppComponent,
     HomeComponent,
     LoginComponent,
-    ProfileComponent
+    ProfileComponent,
+    PicturesComponent,
+    AddTopicComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
