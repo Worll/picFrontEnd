@@ -15,6 +15,7 @@ import { FormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile/profile.component';
 import { PicturesComponent } from './pictures/pictures.component';
 import { AddTopicComponent } from './add-topic/add-topic.component';
+import { AddPictureComponent } from './add-picture/add-picture.component';
 
 
 @NgModule({
@@ -31,7 +32,8 @@ import { AddTopicComponent } from './add-topic/add-topic.component';
     LoginComponent,
     ProfileComponent,
     PicturesComponent,
-    AddTopicComponent
+    AddTopicComponent,
+    AddPictureComponent
   ],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

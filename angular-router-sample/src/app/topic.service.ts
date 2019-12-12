@@ -25,9 +25,5 @@ export class TopicService {
         localStorage.setItem('reponse', JSON.stringify(response));
         return response;
       }));
-
-
-
-
   }
 }

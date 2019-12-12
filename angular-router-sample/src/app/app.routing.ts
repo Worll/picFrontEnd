@@ -5,6 +5,7 @@ import { AuthGuard } from './helpers/auth.guard';
 import { ProfileComponent } from './profile/profile.component';
 import { PicturesComponent } from './pictures/pictures.component';
 import { AddTopicComponent } from './add-topic/add-topic.component';
+import { AddPictureComponent } from './add-picture/add-picture.component';
 
 
 const routes: Routes = [
@@ -15,6 +16,7 @@ const routes: Routes = [
   { path: 'pictures', component: PicturesComponent },
 
   { path: 'addTopic', component: AddTopicComponent },
+  { path: 'addPicture', component: AddPictureComponent },
   // otherwise redirect to home
   { path: '**', redirectTo: '/login' }
 ];

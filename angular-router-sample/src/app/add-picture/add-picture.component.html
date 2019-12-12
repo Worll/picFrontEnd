@@ -1,0 +1,37 @@
+<div class="col-md-6 offset-md-3 mt-5">
+    <div class="card">
+        <h4 class="card-header">Angular 8 JWT Login Example</h4>
+        <div class="card-body">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+                <div class="form-group">
+                    <label for="pictureUrl">Picture url</label>
+                    <input type="text" formControlName="pictureUrl" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.pictureUrl.errors }" />
+                    <div *ngIf="submitted && f.pictureUrl.errors" class="invalid-feedback">
+                        <div *ngIf="f.pictureUrl.errors.required">Picture url is required</div>
+                    </div>
+                </div>
+                <div>
+                  <label>Topics: </label>
+                  <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    <select class="form-control" formControlName="topic"  class="form-control" [ngClass]="{ 'is-invalid': submitted && f.topic.errors }" >
+                    <option *ngFor="let topic of topics" value={{topic.pk}}>
+                              {{topic.fields.name}}
+                    </option>
+                    </select>
+                    <div *ngIf="submitted && f.topic.errors" class="invalid-feedback">
+                        <div *ngIf="f.topic.errors.required">Topic is required</div>
+                    </div>
+
+                </div>
+                <br>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Add picture
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
