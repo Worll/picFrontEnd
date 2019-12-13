@@ -6,6 +6,7 @@ export class Picture {
 
 export class PictureFields {
   authorID: number;
+  authorUsername: string;
   dislikes: number;
   likes: number;
   numberOfComments: number;

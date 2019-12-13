@@ -12,11 +12,11 @@ const routes: Routes = [
   { path: '', component: HomeComponent, canActivate: [AuthGuard] },
   { path: 'login', component: LoginComponent },
 
-  { path: 'topic', component: ProfileComponent },
-  { path: 'pictures', component: PicturesComponent },
+  { path: 'topic', component: ProfileComponent, canActivate: [AuthGuard] },
+  { path: 'pictures', component: PicturesComponent, canActivate: [AuthGuard] },
 
-  { path: 'addTopic', component: AddTopicComponent },
-  { path: 'addPicture', component: AddPictureComponent },
+  { path: 'addTopic', component: AddTopicComponent, canActivate: [AuthGuard] },
+  { path: 'addPicture', component: AddPictureComponent, canActivate: [AuthGuard] },
   // otherwise redirect to home
   { path: '**', redirectTo: '/login' }
 ];

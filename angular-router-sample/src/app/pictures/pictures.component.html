@@ -1,6 +1,17 @@
 <h2>mano pictures</h2>
-<ul class="heroes">
+<ul style="list-style-type:none;">
+
   <li *ngFor="let picture of pictures">
-    <div>{{picture.fields.pictureUrl}}</div>
-  </li>
+      <div class="card">
+  <img class="card-img-top" [src]="picture.fields.pictureUrl" alt="Card image cap">
+  <div class="card-body">
+    <h5 class="card-title">{{picture.fields.authorUsername}}</h5>
+    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <a href="#" class="btn btn-danger float-right">Delete</a>
+  </div>
+</div>
+<br>
+</li>
+
 </ul>
