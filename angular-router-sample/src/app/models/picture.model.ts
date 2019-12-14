@@ -12,4 +12,5 @@ export class PictureFields {
   numberOfComments: number;
   pictureUrl: string;
   topicID: number;
+  isDeleted: boolean = false;
 }

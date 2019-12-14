@@ -16,11 +16,29 @@ export class PicturesComponent implements OnInit {
   loading = false;
   pictures: Picture[];
   topicID: number;
+  error = '';
+  toDeletePictureID: number;
 
   onSelect(picure: Picture): void {
     //console.log(Picture.pk);
     //this.router.navigateByUrl('/pictures', { state: topic });
 
+  }
+
+  deletePicture(pictureID: number): void {
+    this.toDeletePictureID = pictureID;
+    this.loading = true;
+    this.pictureService.deletePictureById(this.topicID, pictureID)
+      .pipe(first())
+      .subscribe(
+        data => {
+          var deletedPicture = this.pictures.find(({ pk }) => pk === pictureID);
+          deletedPicture.fields.isDeleted = true;
+        },
+        error => {
+          this.error = error;
+          this.loading = false;
+        });
   }
 
   constructor(private pictureService: PicturesService, public router: Router) {

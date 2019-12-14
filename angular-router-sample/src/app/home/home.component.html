@@ -21,16 +21,11 @@
 </div>
 <h2>My Heroes</h2>
 
-
-
-
 <ul class="heroes">
   <li *ngFor="let topic of topics">
-    <span><a routerLink="/pictures/2">{{ topic.fields.name }} {{topic.pk}}</a></span>
     <a [routerLink]="['/pictures']" [state]="{ id:topic.pk }">Dynamic Data</a>
   </li>
 </ul>
-
 
 <div class="container-fluid">
   <h2>Three Equal Columns</h2>

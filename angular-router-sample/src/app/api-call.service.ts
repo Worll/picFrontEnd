@@ -11,9 +11,6 @@ import { retry, catchError } from 'rxjs/operators';
 
 export class ApiCallService {
   private REST_API_SERVER = 'https://localhost:8000/api/topics/';
-
-
-
   constructor(private http: HttpClient) { }
 
   // Uses http.get() to load data from a single API endpoint

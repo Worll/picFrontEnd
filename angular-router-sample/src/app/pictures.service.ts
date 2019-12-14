@@ -6,6 +6,7 @@ import { User } from './models/user.model';
 import { Topic } from './models/topic.model';
 import { Picture } from './models/picture.model';
 import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class PicturesService {
@@ -13,6 +14,10 @@ export class PicturesService {
 
   getAllPicturesById(topicId: number) {
     return this.http.get<Picture[]>(`${environment.apiUrl}/api/topics/` + topicId + `/pictures/`);
+  }
+
+  deletePictureById(topicId: number, pictureID: number): Observable<any> {
+    return this.http.delete(`${environment.apiUrl}/api/topics/` + topicId + `/pictures/` + pictureID + '/' , { responseType: 'text' });
   }
 
   createPicture(topicId: number, pictureUrl: string) {
