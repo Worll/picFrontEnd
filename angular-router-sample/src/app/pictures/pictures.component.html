@@ -2,19 +2,44 @@
 <ul style="list-style-type:none;">
 
   <li *ngFor="let picture of pictures">
-      <div class="card" *ngIf="!picture.fields.isDeleted">
-  <img class="card-img-top" [src]="picture.fields.pictureUrl" alt="Card image cap">
-  <div class="card-body">
-    <h5 class="card-title">{{picture.fields.authorUsername}}</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
+    <div class="card" *ngIf="!picture.fields.isDeleted">
+      <img class="card-img-top" [src]="picture.fields.pictureUrl" alt="Card image cap">
+      <div class="card-body">
+        <h5 class="card-title">{{picture.fields.authorUsername}}</h5>
+        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <button type="button" (click)="onCommentsDropdown(picture.pk)" class="btn btn-primary" >Show comments</button>
+        <button type="button" class="btn btn-danger float-right" (click)="deletePicture(picture.pk)">Delete</button>
+        <div *ngIf="picture.fields.error" class="alert alert-danger mt-3 mb-0">{{picture.fields.error}}</div>
+      </div>
+      <div *ngIf="picture.fields.showComments" class="card-body">
+
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit(picture.pk, topicID)">
+                <div class="form-group">
+                    <label for="commentText">Comment text</label>
+                    <input type="text" formControlName="commentText" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.commentText.errors }" />
+                    <div *ngIf="submitted && f.commentText.errors" class="invalid-feedback">
+                        <div *ngIf="f.commentText.errors.required">Picture url is required</div>
+                    </div>
+                </div>
+                <button [disabled]="loading" class="btn btn-primary">
+                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
+                    Add comment
+                </button>
+                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+              </form>
 
 
-    <button type="button" class="btn btn-danger float-right" (click)="deletePicture(picture.pk)">Delete</button>
-<div *ngIf="error && picture.pk == toDeletePictureID" class="alert alert-danger mt-3 mb-0">{{error}}</div>
-  </div>
-</div>
-<br>
-</li>
+      </div>
+      <div>
+              <ul class="list-group list-group-flush">
+     <li class="list-group-item" *ngFor="let comment of picture.fields.comments">{{comment.fields.authorUsername}}: {{comment.fields.commentText}}</li>
+  </ul>
+      </div>
+
+
+    </div>
+
+  <br>
+  </li>
 
 </ul>

@@ -1,3 +1,5 @@
+import { Comment } from '../models/comment.model';
+
 export class Picture {
   pk: number;
   model: string;
@@ -13,4 +15,7 @@ export class PictureFields {
   pictureUrl: string;
   topicID: number;
   isDeleted: boolean = false;
+  showComments: boolean = false;
+  error: string;
+  comments: Comment[];
 }
