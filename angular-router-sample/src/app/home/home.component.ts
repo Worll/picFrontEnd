@@ -13,8 +13,9 @@ import { Router } from '@angular/router';
 export class HomeComponent implements OnInit {
   loading = false;
   topics: Topic[];
+  chunkedTopics: any[];
 
-  constructor(private topicService: TopicService,
+  constructor(private topicService: TopicService, private authenticationService: AuthenticateService,
               private router: Router) { }
 
   ngOnInit() {
@@ -22,8 +23,20 @@ export class HomeComponent implements OnInit {
     this.topicService.getAll().pipe(first()).subscribe(topics => {
       this.loading = false;
       this.topics = topics;
-
-
+      this.chunkedTopics = this.chunk(topics, 3);
     });
   }
+
+  chunk(array, size) {
+        const chunked_arr = [];
+      for (let i = 0; i < array.length; i++) {
+        const last = chunked_arr[chunked_arr.length - 1];
+        if (!last || last.length === size) {
+          chunked_arr.push([array[i]]);
+        } else {
+          last.push(array[i]);
+        }
+      }
+      return chunked_arr;
+    }
 }

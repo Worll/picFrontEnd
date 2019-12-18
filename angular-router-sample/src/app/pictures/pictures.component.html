@@ -8,9 +8,26 @@
         <h5 class="card-title">{{picture.fields.authorUsername}}</h5>
         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
         <button type="button" (click)="onCommentsDropdown(picture.pk)" class="btn btn-primary" >Show comments</button>
+
+
+        <button type="button" class="btn btn-outline-success ml-2">Like</button>
+
+        <button type="button" class="btn btn-outline-danger ml-2">Dislike</button>
+
         <button type="button" class="btn btn-danger float-right" (click)="deletePicture(picture.pk)">Delete</button>
+
+
+        <div class="btn float-right">{{picture.fields.likes}}</div>
+        <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-512.png" class="ml-2 float-right" height="26" width="26">
+
+        <div class="btn float-right">{{picture.fields.dislikes}}</div>
+        <img src="https://cdn1.iconfinder.com/data/icons/hawcons/32/699741-icon-7-sad-face-512.png" class="ml-2 float-right" height="26" width="26">
+
         <div *ngIf="picture.fields.error" class="alert alert-danger mt-3 mb-0">{{picture.fields.error}}</div>
       </div>
+
+
+
       <div *ngIf="picture.fields.showComments" class="card-body">
 
                 <form [formGroup]="loginForm" (ngSubmit)="onSubmit(picture.pk, topicID)">
@@ -32,7 +49,12 @@
       </div>
       <div>
               <ul class="list-group list-group-flush">
-     <li class="list-group-item" *ngFor="let comment of picture.fields.comments">{{comment.fields.authorUsername}}: {{comment.fields.commentText}}</li>
+     <li class="list-group-item" *ngFor="let comment of picture.fields.comments">{{comment.fields.authorUsername}}: {{comment.fields.commentText}}
+          <div class="btn float-right">{{comment.fields.likes}}</div>
+         <img src="https://cdn0.iconfinder.com/data/icons/small-n-flat/24/678087-heart-512.png" class="ml-2 float-right" height="26" width="26">
+         <div class="btn float-right">{{comment.fields.dislikes}}</div>
+        <img src="https://cdn1.iconfinder.com/data/icons/hawcons/32/699741-icon-7-sad-face-512.png" class="ml-2 float-right" height="26" width="26">
+     </li>
   </ul>
       </div>
 

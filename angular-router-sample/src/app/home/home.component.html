@@ -1,11 +1,12 @@
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 
 
 <div class="jumbotron text-center">
-  <h1>My First Bootstrap Page</h1>
-  <p>Resize this responsive page to see the effect!</p>
+  <h1>Welcome {{currentUser.username}} </h1>
+  <p>This is picture sharing website build on Django and Angular 8</p>
 </div>
 
 <div class="card mt-4">
@@ -15,34 +16,29 @@
         <div *ngIf="loading" class="lds-ring"></div>
         <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
         <ul *ngIf="topics">
-            <li *ngFor="let topic of topics">{{topic.pk}} {{topic.model}} {{topic.fields.name}}</li>
+            <li *ngFor="let topic of topics">{{topic.pk}} {{topic.model}} {{topic.fields.name}}
+
+             <p class="card-text"><a [routerLink]="['/pictures']" [state]="{ id:topic.pk }"> {{i}} Dynamic Data</a></p></li>
         </ul>
     </div>
 </div>
-<h2>My Heroes</h2>
 
-<ul class="heroes">
-  <li *ngFor="let topic of topics">
-    <a [routerLink]="['/pictures']" [state]="{ id:topic.pk }">Dynamic Data</a>
-  </li>
-</ul>
+<h2>Choose a topic</h2>
+  <div *ngFor="let chunkedTopic of chunkedTopics;">
+    <br>
+    <div class="row">
+        <div class="col-sm-4" *ngFor="let topic of chunkedTopic">
+          <div class="card">
+          <div class="card-body">
+          <h5 class="card-title">{{topic.fields.name}}</h5>
+          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+          <a href="#" class="btn btn-primary">Go somewhere</a>
+          </div>
+        </div>
+    </div>
 
-<div class="container-fluid">
-  <h2>Three Equal Columns</h2>
-  <p>You can also use numbers to control the column width. Just make sure that the sum always adds up to 12:</p>
-  <div class="row">
-    <div class="col-4 bg-success">.col-4</div>
-    <div class="col-4 bg-warning">.col-4</div>
-    <div class="col-4 bg-success">.col-4</div>
-  </div>
+
 </div>
 
-<div class="container-fluid">
-  <h2>Three Equal Columns</h2>
-  <p>Use the .col class on a specified number of elements and Bootstrap will recognize how many elements there are (and create equal-width columns). In the example below, we use three col elements, which gets a width of 33.33% each.</p>
-  <div class="row">
-    <div class="col bg-success">.col</div>
-    <div class="col bg-warning">.col</div>
-    <div class="col bg-success">.col</div>
-  </div>
-</div>
+
+
