@@ -7,6 +7,7 @@ export class Picture {
 }
 
 export class PictureFields {
+  description: string;
   authorID: number;
   authorUsername: string;
   dislikes: number;

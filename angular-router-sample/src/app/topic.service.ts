@@ -15,11 +15,12 @@ export class TopicService {
     return this.http.get<Topic[]>(`${environment.apiUrl}/api/topics/`);
   }
 
-  createTopic(topicName: string, tags: string) {
+  createTopic(topicName: string, tags: string, thumbnailURL: string) {
     return this.http.post(`${environment.apiUrl}/api/topics/`,
       {
         'topicName': topicName,
-        'tags': tags
+        'tags': tags,
+        'thumbnailURL': thumbnailURL
       }).pipe(map(response => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('reponse', JSON.stringify(response));

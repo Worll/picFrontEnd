@@ -1,4 +1,4 @@
-<h2>mano pictures</h2>
+
 <ul style="list-style-type:none;">
 
   <li *ngFor="let picture of pictures">
@@ -6,7 +6,7 @@
       <img class="card-img-top" [src]="picture.fields.pictureUrl" alt="Card image cap">
       <div class="card-body">
         <h5 class="card-title">{{picture.fields.authorUsername}}</h5>
-        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+        <p class="card-text">{{picture.fields.description}}</p>
         <button type="button" (click)="onCommentsDropdown(picture.pk)" class="btn btn-primary" >Show comments</button>
 
 

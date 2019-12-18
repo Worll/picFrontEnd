@@ -20,10 +20,11 @@ export class PicturesService {
     return this.http.delete(`${environment.apiUrl}/api/topics/` + topicId + `/pictures/` + pictureID + '/' , { responseType: 'text' });
   }
 
-  createPicture(topicId: number, pictureUrl: string) {
+  createPicture(topicId: number, pictureUrl: string, description:string) {
     return this.http.post(`${environment.apiUrl}/api/topics/` + topicId + `/pictures/`,
       {
-        'pictureUrl': pictureUrl
+        'pictureUrl': pictureUrl,
+        'description': description
       }).pipe(map(response => {
         // store user details and jwt token in local storage to keep user logged in between page refreshes
         localStorage.setItem('reponse', JSON.stringify(response));

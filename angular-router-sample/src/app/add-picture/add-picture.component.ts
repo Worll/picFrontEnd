@@ -44,6 +44,7 @@ export class AddPictureComponent implements OnInit {
     this.loginForm = this.formBuilder.group({
       pictureUrl: ['', Validators.required],
       topic: ['', Validators.required],
+      description: ['', Validators.required]
     });
 
     // get return url from route parameters or default to '/'
@@ -67,7 +68,7 @@ export class AddPictureComponent implements OnInit {
       return;
     }
 
-    this.pictureService.createPicture(this.f.topic.value, this.f.pictureUrl.value)
+    this.pictureService.createPicture(this.f.topic.value, this.f.pictureUrl.value, this.f.description.value)
       .pipe(first())
       .subscribe(
         data => {

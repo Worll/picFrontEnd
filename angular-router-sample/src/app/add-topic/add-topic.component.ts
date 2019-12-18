@@ -31,7 +31,8 @@ export class AddTopicComponent implements OnInit {
 
     this.loginForm = this.formBuilder.group({
       topicName: ['', Validators.required],
-      tags: ['', Validators.required]
+      tags: ['', Validators.required],
+      thumbnailURL: ['', Validators.required]
     });
 
     // get return url from route parameters or default to '/'
@@ -50,7 +51,7 @@ export class AddTopicComponent implements OnInit {
       return;
     }
 
-    this.topicService.createTopic(this.f.topicName.value, this.f.tags.value)
+    this.topicService.createTopic(this.f.topicName.value, this.f.tags.value, this.f.thumbnailURL.value)
       .pipe(first())
       .subscribe(
         data => {

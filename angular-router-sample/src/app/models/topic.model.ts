@@ -6,6 +6,7 @@ export class Topic {
 }
 
 export class TopicFields {
+  thumbnailURL: string;
   name: string;
   numberOfPhotos: number;
   authorID: number;

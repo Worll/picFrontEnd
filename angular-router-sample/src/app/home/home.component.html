@@ -5,22 +5,8 @@
 
 
 <div class="jumbotron text-center">
-  <h1>Welcome {{currentUser.username}} </h1>
+  <h1>Welcome</h1>
   <p>This is picture sharing website build on Django and Angular 8</p>
-</div>
-
-<div class="card mt-4">
-    <h4 class="card-header">You're logged in with Angular 8 & JWT!!</h4>
-    <div class="card-body">
-        <h6>Users from secure api end point</h6>
-        <div *ngIf="loading" class="lds-ring"></div>
-        <div class="lds-ring"><div></div><div></div><div></div><div></div></div>
-        <ul *ngIf="topics">
-            <li *ngFor="let topic of topics">{{topic.pk}} {{topic.model}} {{topic.fields.name}}
-
-             <p class="card-text"><a [routerLink]="['/pictures']" [state]="{ id:topic.pk }"> {{i}} Dynamic Data</a></p></li>
-        </ul>
-    </div>
 </div>
 
 <h2>Choose a topic</h2>
@@ -28,11 +14,14 @@
     <br>
     <div class="row">
         <div class="col-sm-4" *ngFor="let topic of chunkedTopic">
+
+    <img [src]="topic.fields.thumbnailURL" class="card-img-top" width="350" height="197">
           <div class="card">
           <div class="card-body">
           <h5 class="card-title">{{topic.fields.name}}</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <p class="card-text">{{topic.fields.tags}}</p>
+
+          <a [routerLink]="['/pictures']" [state]="{ id:topic.pk }" class="btn btn-primary"> Explore</a>
           </div>
         </div>
     </div>
