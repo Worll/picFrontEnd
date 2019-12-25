@@ -24,6 +24,7 @@ export class PicturesComponent implements OnInit {
   topicID: number;
   error = '';
   toDeletePictureID: number;
+  submitted = false;
   comments: Comment[];
 
 
